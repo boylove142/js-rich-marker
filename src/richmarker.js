@@ -726,7 +726,6 @@ RichMarker.prototype.onAdd = function() {
     }
 
     this.markerWrapper_.style['position'] = 'absolute';
-    console.log(this);
   }
 
   if (this.getZIndex()) {
@@ -741,12 +740,15 @@ RichMarker.prototype.onAdd = function() {
 
     var that = this;
     google.maps.event.addDomListener(this.markerContent_, 'click', function(e) {
+      e.stopPropagation();
       google.maps.event.trigger(that, 'click', e);
     });
     google.maps.event.addDomListener(this.markerContent_, 'mouseover', function(e) {
+      e.stopPropagation();
       google.maps.event.trigger(that, 'mouseover', e);
     });
     google.maps.event.addDomListener(this.markerContent_, 'mouseout', function(e) {
+      e.stopPropagation();
       google.maps.event.trigger(that, 'mouseout', e);
     });
   }
